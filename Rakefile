@@ -1,6 +1,7 @@
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
+require File.join(File.dirname(__FILE__), 'lib', 'exposable_attributes', 'version')
 
 desc 'Default: run unit tests.'
 task :default => :test
@@ -20,4 +21,22 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README')
   rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |s|
+    s.name = "exposable_attributes"
+    s.version = ExposableAttributes::VERSION
+    s.summary = "Make ActiveRecord attributes exposable"
+    s.email = "nikolaeff@gmail.com"
+    s.homepage = "http://github.com/nikolaeff/exposable_attributes"
+    s.description = "Ruby on Rails plugin designed to control ActiveRecord::Base to_xml and to_json methods output"
+    s.authors = ['Andrey Nikolaev']
+    s.files =  FileList["[A-Z]*(.rdoc)", "{generators,lib,rails,tasks}/**/*", "init.rb"]
+  end
+
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install jeweler"
 end
