@@ -1,0 +1,45 @@
+
+== exposable_attributes
+
+Exposable Attributes plugin is designed to control ActiveRecord::Base to_xml and to_json methods output.
+It might be useful with plugins like inherited_resources.
+
+
+== Resources
+
+Source
+
+* git://github.com/nikolaeff/exposable_attributes
+
+
+== Example
+
+Redefine to_xml() and to_json() with def params as :only => [:id, :login, :password]
+
+  class User < ActiveRecord::Base
+    exposable_attributes :id, :login, :password
+  end
+
+
+Redefine to_json method only, to_xml will be defined as usual
+
+  class User < ActiveRecord::Base
+    exposable_attributes :json, :only => [:id, :login]
+  end
+
+
+Redefine to_xml only with "except" statement
+
+  class User < ActiveRecord::Base
+    exposable_attributes :xml,  :except => [:encrypted_password, :salt, :single_access_token]
+  end
+
+
+Redefine both to_xml and to_json
+
+  class User < ActiveRecord::Base
+    exposable_attributes :json, :xml, :except => [:encrypted_password, :salt, :single_access_token]
+  end
+
+
+Copyright (c) 2010 nikolaeff, released under the MIT license

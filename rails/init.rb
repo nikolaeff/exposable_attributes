@@ -1,0 +1,1 @@
+require 'exposable_attributes'
