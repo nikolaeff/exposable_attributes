@@ -32,7 +32,7 @@ begin
     s.email = "nikolaeff@gmail.com"
     s.homepage = "http://github.com/nikolaeff/exposable_attributes"
     s.description = "Ruby on Rails plugin designed to control ActiveRecord::Base to_xml and to_json methods output"
-    s.authors = ['Andrey Nikolaev']
+    s.authors = ['Andrey Nikolaev', 'Maxim Filatov']
     s.files =  FileList["[A-Z]*(.rdoc)", "{generators,lib,rails,tasks}/**/*", "init.rb"]
   end
 
